@@ -95,6 +95,7 @@ while True:
         else:
             current_expense['manual_category'] = action
             dirname = os.path.dirname(sys.argv[1])
-            with open(dirname + "/expenses.json", 'w', encoding='utf-8') as file:
+            filename_without_extension = os.path.splitext(os.path.basename(sys.argv[1]))[0]
+            with open(dirname + f"/{filename_without_extension}.json", 'w', encoding='utf-8') as file:
                 json.dump(expenses, file, indent=4, ensure_ascii=False)
-                print("SAVED! ")
+                print("Categoria salva!")
