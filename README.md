@@ -4,7 +4,7 @@ Uma ferramenta simples para categorizar despesas de extratos de cartão de créd
 
 ## Descrição
 
-Este programa permite categorizar despesas a partir de um arquivo JSON contendo transações. Ele apresenta cada despesa e permite atribuir uma categoria predefinida através de atalhos de teclado. A interface mostra as despesas em um formato fácil de visualizar, com a despesa atual destacada e algumas despesas anteriores e posteriores para contexto.
+Este programa permite categorizar despesas a partir de um arquivo JSON contendo transações. Ele apresenta cada despesa e permite atribuir uma categoria predefinida através de atalhos de teclado.
 
 ## Requisitos
 
@@ -30,6 +30,12 @@ Execute o programa passando o caminho para o arquivo JSON de despesas:
 
 ```
 python main.py caminho/para/despesas.json
+```
+
+Para filtrar despesas por uma categoria específica:
+
+```
+python main.py caminho/para/despesas.json CATEGORIA
 ```
 
 ### Categorias Disponíveis
@@ -83,3 +89,8 @@ Após categorizar uma despesa, o campo `manual_category` será adicionado ao obj
 ## Salvamento Automático
 
 O programa salva automaticamente as alterações no arquivo JSON original após cada categorização, garantindo que nenhuma informação seja perdida.
+
+## Dicas de Uso
+
+1. **Categorização Rápida**: Use os atalhos de teclado para categorizar despesas rapidamente.
+2. **Filtragem**: Use o filtro por categoria para revisar ou corrigir categorizações específicas.

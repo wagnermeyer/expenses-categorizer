@@ -18,6 +18,8 @@ categories = {
     "VIAGEM": "VIAGEM", #d
     "TAXAS": "TAXAS", #f
     "OUTROS": "OUTROS", #z
+    "ROUPA": "ROUPA", #x
+    "FARMACIA": "FARMACIA", #c
 }
 
 def open_json_file(path):
@@ -51,11 +53,19 @@ def print_categories_prompt(selected_category):
 
 expenses = open_json_file(sys.argv[1])
 
+if (len(sys.argv[2])):
+    filter_category = sys.argv[2]
+    expenses = [expense for expense in expenses if expense.get('manual_category', '') == filter_category]
+    if not expenses:
+        print(f"No expenses found for category: {filter_category}")
+        sys.exit(1)
+
 keymap = {
     '1': categories["SUPERMERCADO"],
     '2': categories["ALIMENTACAO"], 
     '3': categories["SAUDE"],
-    '4': categories["BEBE"],
+    '4': categories['FARMACIA'],
+    '5': categories["BEBE"],
     'q': categories["ASSINATURAS"],
     'w': categories["HOBBY"],
     'e': categories["CACHORROS"],
@@ -65,7 +75,8 @@ keymap = {
     'd': categories["CASA"],
     'f': categories["VIAGEM"],
     'z': categories["TAXAS"],
-    'x': categories["OUTROS"],
+    'x': categories["ROUPA"],
+    'c': categories["OUTROS"],
     '/': "Quit"
 }
 
@@ -84,12 +95,15 @@ while True:
     key = readchar.readkey()
 
     if key == readchar.key.UP:
-        index -= 1
+        if index > 0:
+            index -= 1
     elif key == readchar.key.DOWN:
-        index += 1
+        if index < len(expenses) - 1:
+            index += 1
     elif key in keymap:
         action = keymap[key]
-        index += 1
+        if index < len(expenses) - 1:
+            index += 1
         if action == "Quit":
             break
         else:

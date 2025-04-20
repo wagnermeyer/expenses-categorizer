@@ -1,1 +1,1 @@
-readchar==4.2.1
+readchar==2.0.1
