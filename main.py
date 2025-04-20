@@ -50,7 +50,7 @@ def print_categories_prompt(selected_category):
     print(" ")
 
 expenses = open_json_file(sys.argv[1])
-# Define your custom key mappings here
+
 keymap = {
     '1': categories["SUPERMERCADO"],
     '2': categories["ALIMENTACAO"], 
