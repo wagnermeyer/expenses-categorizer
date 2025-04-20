@@ -7,7 +7,7 @@ categories = {
     "SUPERMERCADO": "SUPERMERCADO", #1
     "ALIMENTACAO": "ALIMENTACAO", #2
     "SAUDE": "SAUDE", #3
-    "ARTHUR": "ARTHUR", #4
+    "BEBE": "BEBE", #4
     "ASSINATURAS": "ASSINATURAS", #5
     "HOBBY": "HOBBY", #q
     "CACHORROS": "CACHORROS", #w
@@ -55,7 +55,7 @@ keymap = {
     '1': categories["SUPERMERCADO"],
     '2': categories["ALIMENTACAO"], 
     '3': categories["SAUDE"],
-    '4': categories["ARTHUR"],
+    '4': categories["BEBE"],
     'q': categories["ASSINATURAS"],
     'w': categories["HOBBY"],
     'e': categories["CACHORROS"],

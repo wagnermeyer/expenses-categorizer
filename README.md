@@ -68,7 +68,3 @@ O arquivo JSON deve conter uma lista de despesas, onde cada despesa é um objeto
 ```
 
 Após categorizar uma despesa, o campo `manual_category` será adicionado ao objeto.
-
-## Integração com Parser de Fatura
-
-Este programa pode ser usado em conjunto com o [Parser de Fatura Itaú](https://github.com/seu-usuario/fatura-itau-parser) para extrair e categorizar despesas de faturas de cartão de crédito.
