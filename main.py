@@ -18,6 +18,7 @@ PESSOAIS = "PESSOAIS"
 VIAGENS = "VIAGENS"
 DESCONHECIDO = "DESCONHECIDO"
 OUTROS = "OUTROS"
+CACHORROS = "CACHORROS"
 
 categories = {
     ALIMENTACAO: ALIMENTACAO, #1
@@ -34,6 +35,7 @@ categories = {
     VIAGENS: VIAGENS, #d
     DESCONHECIDO: DESCONHECIDO, #f
     OUTROS: OUTROS, #z
+    CACHORROS: CACHORROS, #c
 }
 
 def open_json_file(path):
@@ -79,7 +81,7 @@ keymap = {
     '3': categories[SUPERMERCADO],
     '4': categories[FARMACIA],
     'q': categories[TRANSPORTE],
-    'w': categories[LAZER_HOBBY],
+    'w': categories[CACHORROS],
     'e': categories[JUROS_MULTAS_TAXAS],
     'r': categories[SAUDE],
     'a': categories[FILHOS],
