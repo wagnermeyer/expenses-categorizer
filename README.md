@@ -44,15 +44,15 @@ python main.py caminho/para/despesas.json CATEGORIA
 - `2` - ALIMENTAÇÃO
 - `3` - SAÚDE
 - `4` - BEBÊ
-- `q` - ASSINATURAS
-- `w` - HOBBY
-- `e` - CACHORROS
-- `r` - PRESENTES
-- `a` - DESCONHECIDO
-- `s` - TRANSPORTE
-- `d` - CASA
-- `f` - VIAGEM
-- `z` - TAXAS
+- `q` - TRANSPORTE
+- `w` - LAZER/HOBBY
+- `e` - JUROS/MULTAS/TAXAS
+- `r` - SAÚDE
+- `a` - FILHOS
+- `s` - PRESENTES/DOAÇÕES
+- `d` - PESSOAIS
+- `f` - VIAGENS
+- `z` - DESCONHECIDO
 - `x` - OUTROS
 - `/` - Sair
 
