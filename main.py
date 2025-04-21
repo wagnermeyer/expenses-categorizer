@@ -3,23 +3,37 @@ import sys
 import readchar
 import os
 
+# Define category constants
+ALIMENTACAO = "ALIMENTACAO"
+MORADIA = "MORADIA"
+SUPERMERCADO = "SUPERMERCADO"
+FARMACIA = "FARMACIA"
+TRANSPORTE = "TRANSPORTE"
+LAZER_HOBBY = "LAZER/HOBBY"
+JUROS_MULTAS_TAXAS = "JUROS/MULTAS/TAXAS"
+SAUDE = "SAÚDE"
+FILHOS = "FILHOS"
+PRESENTES_DOACOES = "PRESENTES/DOACOES"
+PESSOAIS = "PESSOAIS"
+VIAGENS = "VIAGENS"
+DESCONHECIDO = "DESCONHECIDO"
+OUTROS = "OUTROS"
+
 categories = {
-    "SUPERMERCADO": "SUPERMERCADO", #1
-    "ALIMENTACAO": "ALIMENTACAO", #2
-    "SAUDE": "SAUDE", #3
-    "BEBE": "BEBE", #4
-    "ASSINATURAS": "ASSINATURAS", #5
-    "HOBBY": "HOBBY", #q
-    "CACHORROS": "CACHORROS", #w
-    "PRESENTES": "PRESENTES", #e
-    "DESCONHECIDO": "DESCONHECIDO", #r
-    "TRANSPORTE": "TRANSPORTE", #a
-    "CASA": "CASA", #s
-    "VIAGEM": "VIAGEM", #d
-    "TAXAS": "TAXAS", #f
-    "OUTROS": "OUTROS", #z
-    "ROUPA": "ROUPA", #x
-    "FARMACIA": "FARMACIA", #c
+    ALIMENTACAO: ALIMENTACAO, #1
+    MORADIA: MORADIA, #2 
+    SUPERMERCADO: SUPERMERCADO, #3
+    FARMACIA: FARMACIA, #4
+    TRANSPORTE: TRANSPORTE, #5
+    LAZER_HOBBY: LAZER_HOBBY, #q
+    JUROS_MULTAS_TAXAS: JUROS_MULTAS_TAXAS, #w
+    SAUDE: SAUDE, #e
+    FILHOS: FILHOS, #r
+    PRESENTES_DOACOES: PRESENTES_DOACOES, #a
+    PESSOAIS: PESSOAIS, #s
+    VIAGENS: VIAGENS, #d
+    DESCONHECIDO: DESCONHECIDO, #f
+    OUTROS: OUTROS, #z
 }
 
 def open_json_file(path):
@@ -38,7 +52,7 @@ def open_json_file(path):
 def print_expense(index, expense):
     print("=" * 100)
     category_str = f" | \033[32m{expense['manual_category']}\033[0m" if 'manual_category' in expense else ""
-    print(f"{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['price']}{category_str}")
+    print(f"{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['price']} | {expense['category']}{category_str}")
 
 
 def print_categories_prompt(selected_category):
@@ -53,30 +67,21 @@ def print_categories_prompt(selected_category):
 
 expenses = open_json_file(sys.argv[1])
 
-if (len(sys.argv[2])):
-    filter_category = sys.argv[2]
-    expenses = [expense for expense in expenses if expense.get('manual_category', '') == filter_category]
-    if not expenses:
-        print(f"No expenses found for category: {filter_category}")
-        sys.exit(1)
-
 keymap = {
-    '1': categories["SUPERMERCADO"],
-    '2': categories["ALIMENTACAO"], 
-    '3': categories["SAUDE"],
-    '4': categories['FARMACIA'],
-    '5': categories["BEBE"],
-    'q': categories["ASSINATURAS"],
-    'w': categories["HOBBY"],
-    'e': categories["CACHORROS"],
-    'r': categories["PRESENTES"], 
-    'a': categories["DESCONHECIDO"],
-    's': categories["TRANSPORTE"],
-    'd': categories["CASA"],
-    'f': categories["VIAGEM"],
-    'z': categories["TAXAS"],
-    'x': categories["ROUPA"],
-    'c': categories["OUTROS"],
+    '1': categories[ALIMENTACAO],
+    '2': categories[MORADIA],
+    '3': categories[SUPERMERCADO],
+    '4': categories[FARMACIA],
+    'q': categories[TRANSPORTE],
+    'w': categories[LAZER_HOBBY],
+    'e': categories[JUROS_MULTAS_TAXAS],
+    'r': categories[SAUDE],
+    'a': categories[FILHOS],
+    's': categories[PRESENTES_DOACOES],
+    'd': categories[PESSOAIS],
+    'f': categories[VIAGENS],
+    'z': categories[DESCONHECIDO],
+    'x': categories[OUTROS],
     '/': "Quit"
 }
 
