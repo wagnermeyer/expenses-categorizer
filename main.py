@@ -49,10 +49,16 @@ def open_json_file(path):
         return None
 
 
-def print_expense(index, expense):
-    print("=" * 100)
+def print_expense(index, expense, is_current=False):
+    if is_current:
+        print("=" * 100)
+    else:
+        print(f"\033[90m{'=' * 100}\033[0m")
     category_str = f" | \033[32m{expense['manual_category']}\033[0m" if 'manual_category' in expense else ""
-    print(f"{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['amount']} | {expense['category']}{category_str}")
+    if is_current:
+        print(f"{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['amount']} | {expense['category']}{category_str}")
+    else:
+        print(f"\033[90m{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['amount']} | {expense['category']}{category_str}\033[0m")
 
 
 def print_categories_prompt(selected_category):
@@ -92,7 +98,7 @@ while True:
     current_expense = expenses[index]
     for i in range(max(0, index-4), index):
         print_expense(i, expenses[i])
-    print_expense(index, current_expense)
+    print_expense(index, current_expense, is_current=True)
     print("-" * 100)
     print_categories_prompt(current_expense.get('manual_category', None))
     for i in range(index+1, min(index+5, len(expenses))):
