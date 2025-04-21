@@ -52,7 +52,7 @@ def open_json_file(path):
 def print_expense(index, expense):
     print("=" * 100)
     category_str = f" | \033[32m{expense['manual_category']}\033[0m" if 'manual_category' in expense else ""
-    print(f"{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['price']} | {expense['category']}{category_str}")
+    print(f"{index+1}/{len(expenses)} | {expense['date']} | {expense['description']} | R$ {expense['amount']} | {expense['category']}{category_str}")
 
 
 def print_categories_prompt(selected_category):
