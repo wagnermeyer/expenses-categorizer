@@ -45,7 +45,7 @@ python main.py caminho/para/despesas.json CATEGORIA
 - `3` - SAÚDE
 - `4` - BEBÊ
 - `q` - TRANSPORTE
-- `w` - LAZER/HOBBY
+- `w` - CACHORROS
 - `e` - JUROS/MULTAS/TAXAS
 - `r` - SAÚDE
 - `a` - FILHOS
@@ -54,6 +54,7 @@ python main.py caminho/para/despesas.json CATEGORIA
 - `f` - VIAGENS
 - `z` - DESCONHECIDO
 - `x` - OUTROS
+- `c` - CACHORROS
 - `/` - Sair
 
 ### Navegação
