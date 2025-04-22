@@ -2,6 +2,7 @@ import json
 import sys
 import readchar
 import os
+from termgraph.termgraph import chart
 
 # Define category constants
 ALIMENTACAO = "ALIMENTACAO"
@@ -19,24 +20,7 @@ VIAGENS = "VIAGENS"
 DESCONHECIDO = "DESCONHECIDO"
 OUTROS = "OUTROS"
 CACHORROS = "CACHORROS"
-
-categories = {
-    ALIMENTACAO: ALIMENTACAO, #1
-    MORADIA: MORADIA, #2 
-    SUPERMERCADO: SUPERMERCADO, #3
-    FARMACIA: FARMACIA, #4
-    TRANSPORTE: TRANSPORTE, #5
-    LAZER_HOBBY: LAZER_HOBBY, #q
-    JUROS_MULTAS_TAXAS: JUROS_MULTAS_TAXAS, #w
-    SAUDE: SAUDE, #e
-    FILHOS: FILHOS, #r
-    PRESENTES_DOACOES: PRESENTES_DOACOES, #a
-    PESSOAIS: PESSOAIS, #s
-    VIAGENS: VIAGENS, #d
-    DESCONHECIDO: DESCONHECIDO, #f
-    OUTROS: OUTROS, #z
-    CACHORROS: CACHORROS, #c
-}
+PAIS = "PAIS"
 
 def open_json_file(path):
     try:
@@ -76,20 +60,21 @@ def print_categories_prompt(selected_category):
 expenses = open_json_file(sys.argv[1])
 
 keymap = {
-    '1': categories[ALIMENTACAO],
-    '2': categories[MORADIA],
-    '3': categories[SUPERMERCADO],
-    '4': categories[FARMACIA],
-    'q': categories[TRANSPORTE],
-    'w': categories[CACHORROS],
-    'e': categories[JUROS_MULTAS_TAXAS],
-    'r': categories[SAUDE],
-    'a': categories[FILHOS],
-    's': categories[PRESENTES_DOACOES],
-    'd': categories[PESSOAIS],
-    'f': categories[VIAGENS],
-    'z': categories[DESCONHECIDO],
-    'x': categories[OUTROS],
+    '1': ALIMENTACAO,
+    '2': MORADIA,
+    '3': SUPERMERCADO,
+    '4': FARMACIA,
+    'q': TRANSPORTE,
+    'w': CACHORROS,
+    'e': JUROS_MULTAS_TAXAS,
+    'r': SAUDE,
+    'a': FILHOS,
+    's': PRESENTES_DOACOES,
+    'd': PESSOAIS,
+    'f': VIAGENS,
+    'z': PAIS,
+    'x': DESCONHECIDO,
+    'c': OUTROS,
     '/': "Quit"
 }
 
@@ -105,6 +90,7 @@ while True:
     print_categories_prompt(current_expense.get('manual_category', None))
     for i in range(index+1, min(index+5, len(expenses))):
         print_expense(i, expenses[i])
+
     key = readchar.readkey()
 
     if key == readchar.key.UP:
@@ -115,8 +101,6 @@ while True:
             index += 1
     elif key in keymap:
         action = keymap[key]
-        if index < len(expenses) - 1:
-            index += 1
         if action == "Quit":
             break
         else:
@@ -125,4 +109,5 @@ while True:
             filename_without_extension = os.path.splitext(os.path.basename(sys.argv[1]))[0]
             with open(dirname + f"/{filename_without_extension}.json", 'w', encoding='utf-8') as file:
                 json.dump(expenses, file, indent=4, ensure_ascii=False)
-                print("Categoria salva!")
+            if index < len(expenses) - 1:
+                index += 1
